@@ -39,7 +39,7 @@ void swap(char** a, char** b) {
 }
 
 char* getLongestString(char** strings, int size) {
-	char* max = NULL;
+	char* max = "\0";
 	for (int i = 0; i < size; i++) {
 		if (strlen(max) < strlen(strings[i])) {
 			max = strings[i];
