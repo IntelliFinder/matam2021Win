@@ -1,43 +1,40 @@
-//
-// Created by Snir on 11/1/2021.
-//
-
 #include <stdio.h>
 #include <stdlib.h>
 #include <stdbool.h>
 
+//==============================================================================
 
 
-void printSizeMsg();
-void printNumbersMsg();
+/** request user inserts number of numbers */
+int readSize();
+
+/** request user to insert numbers */
+int readNumbers( int size );
+
+/** calculates sum of exponents of two*/
+int sumExponents( int num_array[]);
+
+/** print numbers that are powers of two and sum of exponents */
 void printResults(int num, int m,int num_array[], int power_array[]);
 
-int isPowerOfTwo(int num); //power of two, -1 o/w
+/** returns power of two if number is a power of two, -1 otherwise */
+int isPowerOfTwo(int num);
+
+
+//==============================================================================
+
 
 int main ()
 {
-    int num, idx, m=0;
-    printSizeMsg();
-    scanf("%d", &num);
-    if( num <  1 )
+    int idx, num_array[num], power_array[num];
+    int size = readSize();
+    if( size <  1 )
     {
         printf("Invalid size\n");
-        return 0;
     }
-    //printf("num is %d \n", num);
-    int num_array[num];
-    int power_array[num];
-    printNumbersMsg();
-    int i;
-    for(i =0; i<num; i++)
-        if(!scanf( "%d", &num_array[i] ))
-        {
-            printf("Invalid number\n");
-            return 0;
-        }
-    //for(i =0; i<num; i++)
-    //    printf( "%d\n", num_array[i] );
-    for(i=0;i<num;i++)
+    int num_array[size] = readNumbers( size );
+    int exp = sumExponents( int size, int num_array[] )
+    for(int i=0; i<num; i++)
     {
         idx = isPowerOfTwo(num_array[i]);
         power_array[i] = idx;
@@ -49,13 +46,21 @@ int main ()
     return 0;
 }
 
-void printSizeMsg()
+int readSize()
 {
- printf("Enter size of input:\n");
+    printf("Enter size of input:\n");
+    scanf("%d", &num);
+    return num;
 }
-void printNumbersMsg()
+int readNumbers( int size )
 {
     printf("Enter numbers:\n");
+    for(int i =0; i<size; i++)
+        if(!scanf( "%d", &num_array[i] ))
+        {
+            printf("Invalid number\n");
+            return 0;
+        }
 }
 int isPowerOfTwo(int num)
 {
@@ -72,6 +77,10 @@ int isPowerOfTwo(int num)
     if( counter == num )
         return exp;
     return -1;
+}
+int sumExponents( int num_array[])
+{
+
 }
 void printResults(int num, int m,int num_array[], int power_array[])
 {
