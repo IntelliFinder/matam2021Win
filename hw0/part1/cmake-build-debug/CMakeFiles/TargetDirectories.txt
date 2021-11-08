@@ -1,3 +1,0 @@
-/cygdrive/c/Users/Snir/Desktop/technion/MSc/ISP/hw0/cmake-build-debug/CMakeFiles/edit_cache.dir
-/cygdrive/c/Users/Snir/Desktop/technion/MSc/ISP/hw0/cmake-build-debug/CMakeFiles/rebuild_cache.dir
-/cygdrive/c/Users/Snir/Desktop/technion/MSc/ISP/hw0/cmake-build-debug/CMakeFiles/hw0.dir

@@ -26,12 +26,14 @@ int isPowerOfTwo(int num);
 
 int main ()
 {
-    int idx, num_array[num], power_array[num];
+
     int size = readSize();
     if( size <  1 )
     {
         printf("Invalid size\n");
     }
+    int* num_array = (int*)malloc( sizeof(int)*size);
+    int* power_array = (int*)malloc( sizeof(int)*size);
     int num_array[size] = readNumbers( size );
     int exp = sumExponents( int size, int num_array[] )
     for(int i=0; i<num; i++)
