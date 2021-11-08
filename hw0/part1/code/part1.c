@@ -9,16 +9,16 @@
 int readSize();
 
 /** request user to insert numbers */
-int readNumbers( int size );
+void readNumbers( int size );
 
 /** calculates sum of exponents of two*/
-int sumExponents( int num_array[]);
+int sumExponents( int size, int* num_array, int* power_array);
 
 /** print numbers that are powers of two and sum of exponents */
-void printResults(int num, int m,int num_array[], int power_array[]);
+void printResults(int size, int exp,int* num_array, int* power_array);
 
 /** returns power of two if number is a power of two, -1 otherwise */
-int isPowerOfTwo(int num);
+int isPowerOfTwo(int size);
 
 
 //==============================================================================
@@ -34,16 +34,12 @@ int main ()
     }
     int* num_array = (int*)malloc( sizeof(int)*size);
     int* power_array = (int*)malloc( sizeof(int)*size);
-    int num_array[size] = readNumbers( size );
-    int exp = sumExponents( int size, int num_array[] )
-    for(int i=0; i<num; i++)
-    {
-        idx = isPowerOfTwo(num_array[i]);
-        power_array[i] = idx;
-        if(idx != -1)
-            m += idx;
+    if (num_array == NULL || power_array == NULL) {
+        exit(0);
     }
-    printResults(num, m, num_array, power_array);
+    num_array = readNumbers( size );
+    int exp = sumExponents( size, num_array, power_array )
+    printResults(size, exp, num_array, power_array);
 
     return 0;
 }
@@ -54,14 +50,13 @@ int readSize()
     scanf("%d", &num);
     return num;
 }
-int readNumbers( int size )
+void readNumbers( int* num_array, int size )
 {
     printf("Enter numbers:\n");
     for(int i =0; i<size; i++)
         if(!scanf( "%d", &num_array[i] ))
         {
             printf("Invalid number\n");
-            return 0;
         }
 }
 int isPowerOfTwo(int num)
@@ -80,13 +75,22 @@ int isPowerOfTwo(int num)
         return exp;
     return -1;
 }
-int sumExponents( int num_array[])
+int sumExponents( int size, int* num_array, int* power_array)
 {
-
+    int exp=0;
+    for(int i=0; i < size; i++)
+    {
+        power_array[i] = isPowerOfTwo(num_array[i]);
+        if(power_array[i] != -1)
+        {
+            exp += power_array[i];
+        }
+    }
+    return exp;
 }
-void printResults(int num, int m,int num_array[], int power_array[])
+void printResults(int size, int exp, int* num_array, int* power_array)
 {
-    for(int i =0; i<num; i++)
+    for(int i =0; i<size; i++)
     {
         if( power_array[i] != -1)
         {
@@ -94,5 +98,5 @@ void printResults(int num, int m,int num_array[], int power_array[])
         }
     }
 
-    printf("Total exponent sum is %d\n", m);
+    printf("Total exponent sum is %d\n", exp);
 }
