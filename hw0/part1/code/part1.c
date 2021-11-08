@@ -47,6 +47,7 @@ int main ()
 
 int readSize()
 {
+    int num;
     printf("Enter size of input:\n");
     scanf("%d", &num);
     return num;
