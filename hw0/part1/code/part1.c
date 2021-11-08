@@ -59,6 +59,7 @@ void readNumbers( int* num_array, int size )
         if(!scanf( "%d", &num_array[i] ))
         {
             printf("Invalid number\n");
+            exit(0);
         }
 }
 int isPowerOfTwo(int num)
