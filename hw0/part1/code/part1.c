@@ -9,7 +9,7 @@
 int readSize();
 
 /** request user to insert numbers */
-void readNumbers( int size );
+void readNumbers( int* num_array, int size );
 
 /** calculates sum of exponents of two*/
 int sumExponents( int size, int* num_array, int* power_array);
@@ -18,7 +18,7 @@ int sumExponents( int size, int* num_array, int* power_array);
 void printResults(int size, int exp,int* num_array, int* power_array);
 
 /** returns power of two if number is a power of two, -1 otherwise */
-int isPowerOfTwo(int size);
+int isPowerOfTwo(int num);
 
 
 //==============================================================================
@@ -37,10 +37,11 @@ int main ()
     if (num_array == NULL || power_array == NULL) {
         exit(0);
     }
-    num_array = readNumbers( size );
-    int exp = sumExponents( size, num_array, power_array )
+    readNumbers( num_array, size );
+    int exp = sumExponents( size, num_array, power_array );
     printResults(size, exp, num_array, power_array);
-
+    free( num_array );
+    free( power_array );
     return 0;
 }
 
@@ -77,7 +78,7 @@ int isPowerOfTwo(int num)
 }
 int sumExponents( int size, int* num_array, int* power_array)
 {
-    int exp=0;
+    int exp = 0;
     for(int i=0; i < size; i++)
     {
         power_array[i] = isPowerOfTwo(num_array[i]);
